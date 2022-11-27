@@ -49,23 +49,33 @@ export default function App() {
   return (
     <div className="App">
       <div className="form">
-        <input
-          type="text"
-          placeholder="Name..."
-          required
-          minlength="3"
-          onChange={(event) => {
-            setNewName(event.target.value);
-          }}
-        />
-        <input
-          type="number"
-          placeholder="Age..."
-          onChange={(event) => {
-            setNewAge(event.target.value);
-          }}
-        />
-        <button onClick={createUser}>Create User</button>
+        <div className="group">
+            <input
+              type="text"
+              required
+              minlength="3"
+              placeholder="Name..."
+              onChange={(event) => {
+                setNewName(event.target.value);
+              }}
+            />
+            <span class="highlight"></span>
+            <span class="bar"></span>
+          </div>
+
+          <div className="group">
+            <input
+              type="text"
+              placeholder="Age..."
+              required
+              onChange={(event) => {
+                setNewAge(event.target.value);
+              }}
+            />
+            <span class="highlight"></span>
+            <span class="bar"></span>
+          </div>
+          <button className="button" onClick={createUser}>Create User</button>
       </div>
       {users.map((user) => {
         return (
