@@ -20,15 +20,21 @@ export default function App() {
     await addDoc(usersCollectionRef, { name: newName, age: Number(newAge) });
   };
 
-  const updateUser = async (id, age) => {
+  const addUserAge = async (id, age) => {
     const userDoc = doc(db, "users", id);
     const newFields = { age: age + 1 };
     await updateDoc(userDoc, newFields);
   };
 
+  const subtractUserAge = async (id, age) => {
+    const userDoc = doc(db, "users", id);
+    const newFields = { age: age - 1 };
+    await updateDoc(userDoc, newFields);
+  };
+
   const deleteUser = async (id) => {
     const userDoc = doc(db, "users", id);
-    await deleteDoc(userDoc)
+    await deleteDoc(userDoc);
   };
 
   useEffect(() => {
@@ -42,21 +48,25 @@ export default function App() {
 
   return (
     <div className="App">
-      <input
-        type="text"
-        placeholder="Name..."
-        onChange={(event) => {
-          setNewName(event.target.value);
-        }}
-      />
-      <input
-        type="number"
-        placeholder="Age..."
-        onChange={(event) => {
-          setNewAge(event.target.value);
-        }}
-      />
-      <button onClick={createUser}>Create User</button>
+      <div className="form">
+        <input
+          type="text"
+          placeholder="Name..."
+          required
+          minlength="3"
+          onChange={(event) => {
+            setNewName(event.target.value);
+          }}
+        />
+        <input
+          type="number"
+          placeholder="Age..."
+          onChange={(event) => {
+            setNewAge(event.target.value);
+          }}
+        />
+        <button onClick={createUser}>Create User</button>
+      </div>
       {users.map((user) => {
         return (
           <div>
@@ -65,17 +75,24 @@ export default function App() {
             <h1>Age: {user.age}</h1>
             <button
               onClick={() => {
-                updateUser(user.id, user.age);
+                addUserAge(user.id, user.age);
               }}
             >
-              Increase Age
+              +
+            </button>
+            <button
+              onClick={() => {
+                subtractUserAge(user.id, user.age);
+              }}
+            >
+              -
             </button>
             <button
               onClick={() => {
                 deleteUser(user.id);
               }}
             >
-              Delete User
+              X
             </button>
           </div>
         );
