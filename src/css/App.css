@@ -1,7 +1,7 @@
 .App {
-  text-align: center;
   max-width: 900px;
   margin: auto;
+  
 }
 
 .form {
@@ -156,4 +156,47 @@ input:focus ~ .highlight {
 .button:active {
   box-shadow: #d6d6e7 0 3px 7px inset;
   transform: translateY(2px);
+}
+
+
+
+
+
+.info {
+  background-color: #757575;
+  border: 1px solid red;
+  display: flex;
+  justify-content: space-between;
+  padding: 24px;
+  margin: 18px 0;
+  border-radius: 12px;
+}
+
+.info .pers {
+
+}
+
+.info button {
+  background-color: #48abe0;
+  color: white;
+  border: none;
+  padding: 5px;
+  font-size: 31px;
+  height: 50px;
+  width: 50px;
+  box-shadow: 0 2px 4px darkslategray;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 50%;
+  margin: 0 8px;
+}
+
+.info button:active {
+  background-color: #48abe0;
+  box-shadow: 0 0 2px darkslategray;
+  transform: translateY(2px);
+}
+
+.info button:not(:first-child) {
+  margin-top: 10px;
 }

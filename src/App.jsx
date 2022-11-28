@@ -79,31 +79,35 @@ export default function App() {
       </div>
       {users.map((user) => {
         return (
-          <div>
+          <div className="info">
             {" "}
-            <h1>Name: {user.name}</h1>
-            <h1>Age: {user.age}</h1>
-            <button
-              onClick={() => {
-                addUserAge(user.id, user.age);
-              }}
-            >
-              +
-            </button>
-            <button
-              onClick={() => {
-                subtractUserAge(user.id, user.age);
-              }}
-            >
-              -
-            </button>
-            <button
-              onClick={() => {
-                deleteUser(user.id);
-              }}
-            >
-              X
-            </button>
+            <div className="pers">
+              <h1>Name: {user.name}</h1>
+              <h1>Age: {user.age}</h1>
+            </div>
+            <div className="buttons">
+              <button
+                onClick={() => {
+                  addUserAge(user.id, user.age);
+                }}
+              >
+                +
+              </button>
+              <button
+                onClick={() => {
+                  subtractUserAge(user.id, user.age);
+                }}
+              >
+                -
+              </button>
+              <button
+                onClick={() => {
+                  deleteUser(user.id);
+                }}
+              >
+                X
+              </button>
+            </div>
           </div>
         );
       })}
