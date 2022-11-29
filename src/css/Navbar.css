@@ -1,16 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Trocchi&display=swap");
+
 *{
     margin: 0;
     padding: 0;
 }
 
 .nav{
-    background-color: lightblue;
+    background-color: #D6E4E5;
     width: 100%;
     height: auto;
     text-align: center;
     padding: 24px 0;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
 }
 
 .title h1{
     color: black;
+    font-family: "Trocchi", serif;
+    font-size: 36px;
 }

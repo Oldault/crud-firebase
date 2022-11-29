@@ -101,6 +101,7 @@ export default function App() {
                 -
               </button>
               <button
+                className="x"
                 onClick={() => {
                   deleteUser(user.id);
                 }}

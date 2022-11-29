@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Trocchi&display=swap");
+
 .App {
   max-width: 900px;
   margin: auto;
@@ -108,7 +110,6 @@ input:focus ~ .highlight {
   }
 }
 
-
 /* CSS */
 .button {
   align-items: center;
@@ -158,26 +159,28 @@ input:focus ~ .highlight {
   transform: translateY(2px);
 }
 
-
-
-
-
 .info {
-  background-color: #757575;
-  border: 1px solid red;
+  background-color: #D6E4E5;
   display: flex;
   justify-content: space-between;
   padding: 24px;
   margin: 18px 0;
   border-radius: 12px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 
 .info .pers {
+    color: black;
+    font-family: "Trocchi", serif;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 48px;
+    margin: 0;
+  }
 
-}
 
 .info button {
-  background-color: #48abe0;
+  background-color: #497174;
   color: white;
   border: none;
   padding: 5px;
@@ -189,6 +192,11 @@ input:focus ~ .highlight {
   transition: all 0.2s ease;
   border-radius: 50%;
   margin: 0 8px;
+
+}
+
+.info button .x {
+  background-color: #EB6440;
 }
 
 .info button:active {
