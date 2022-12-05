@@ -17,7 +17,11 @@ export default function App() {
   const usersCollectionRef = collection(db, "users");
 
   const createUser = async () => {
-    await addDoc(usersCollectionRef, { name: newName, age: Number(newAge) });
+    try {
+      await addDoc(usersCollectionRef, { name: newName, age: Number(newAge) });
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const addUserAge = async (id, age) => {
@@ -41,6 +45,7 @@ export default function App() {
     const getUsers = async () => {
       const data = await getDocs(usersCollectionRef);
       setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      console.log("useEffect")
     };
 
     getUsers();
