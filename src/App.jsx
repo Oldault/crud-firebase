@@ -19,6 +19,7 @@ export default function App() {
   const createUser = async () => {
     try {
       await addDoc(usersCollectionRef, { name: newName, age: Number(newAge) });
+      console.log("createUser");
     } catch (e) {
       console.log(e);
     }
@@ -28,63 +29,70 @@ export default function App() {
     const userDoc = doc(db, "users", id);
     const newFields = { age: age + 1 };
     await updateDoc(userDoc, newFields);
+    console.log("addUserAge");
   };
 
   const subtractUserAge = async (id, age) => {
     const userDoc = doc(db, "users", id);
     const newFields = { age: age - 1 };
     await updateDoc(userDoc, newFields);
+    console.log("subtractUserAge");
   };
 
   const deleteUser = async (id) => {
     const userDoc = doc(db, "users", id);
     await deleteDoc(userDoc);
+    console.log("deleteUser");
   };
 
   useEffect(() => {
     const getUsers = async () => {
       const data = await getDocs(usersCollectionRef);
       setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-      console.log("useEffect")
+      console.log("useEffect");
     };
 
     getUsers();
-  }, [usersCollectionRef]);
+    console.log("getUsers");
+  }, []);
+
 
   return (
     <div className="App">
       <div className="form">
         <div className="group">
-            <input
-              type="text"
-              required
-              minlength="3"
-              placeholder="Name..."
-              onChange={(event) => {
-                setNewName(event.target.value);
-              }}
-            />
-            <span class="highlight"></span>
-            <span class="bar"></span>
-          </div>
+          <input
+            type="text"
+            required
+            minlength="3"
+            placeholder="Name..."
+            onChange={(event) => {
+              setNewName(event.target.value);
+            }}
+          />
+          <span class="highlight"></span>
+          <span class="bar"></span>
+        </div>
 
-          <div className="group">
-            <input
-              type="text"
-              placeholder="Age..."
-              required
-              onChange={(event) => {
-                setNewAge(event.target.value);
-              }}
-            />
-            <span class="highlight"></span>
-            <span class="bar"></span>
-          </div>
-          <button className="button" onClick={createUser}>Create User</button>
+        <div className="group">
+          <input
+            type="text"
+            placeholder="Age..."
+            required
+            onChange={(event) => {
+              setNewAge(event.target.value);
+            }}
+          />
+          <span class="highlight"></span>
+          <span class="bar"></span>
+        </div>
+        <button className="button" onClick={createUser}>
+          Create User
+        </button>
       </div>
       {users.map((user) => {
         return (
-          <div className="info">
+          <div className="info" key={user.name}>
             {" "}
             <div className="pers">
               <h1>Name: {user.name}</h1>
